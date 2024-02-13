@@ -66,7 +66,12 @@ class Movies extends Component {
     
   };
   render() {
+    const{length:count}= this.state.arryMovies;
+    if(count===0)
+    return<p>there are no movies in the database</p>;
     return (
+      <>
+      <p>Showing {count} movies in the database</p>
       <table className="table">
         <thead>
           <tr>
@@ -101,6 +106,7 @@ class Movies extends Component {
           ))}
         </tbody>
       </table>
+      </>
     );
   }
 }
