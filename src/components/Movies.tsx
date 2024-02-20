@@ -1,4 +1,5 @@
 import { Component } from "react";
+import Likes from "./Likes";
 //import { arryMovies, getMovies } from "../page/FakeMoviesList";
 
 /*
@@ -31,6 +32,7 @@ const arryMovies = [
     numberInStock: 6,
     dailyRentalRate: 4.6,
     publishDate: "2024-01-25",
+    likes:true,
   },
 
   {
@@ -65,6 +67,13 @@ class Movies extends Component {
     this.setState({ arryMovies });
     
   };
+
+  handleLikes= (movie:any) =>{
+    const arryMovies=[...this.state.arryMovies];
+    const index=arryMovies.indexOf(movie);
+    arryMovies[index].likes =!arryMovies[index].likes;
+    this.setState({arryMovies});
+  }
   render() {
     const{length:count}= this.state.arryMovies;
     if(count===0)
@@ -76,11 +85,12 @@ class Movies extends Component {
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Title</th>
+            <th scope="col">Titles</th>
             <th scope="col">Genre</th>
             <th scope="col">Stock</th>
             <th scope="col">Rate</th>
             <th scope="col">Publiishdate</th>
+            <th>likes</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -94,6 +104,9 @@ class Movies extends Component {
               <td>{movie.dailyRentalRate}</td>
               <td>{movie.publishDate}</td>
               <td>
+                <Likes onClick={()=> this.handleLikes(movie)}/>
+              </td>
+              <td>
                 <button
                   onClick={() => this.handleDelete(movie)}
                   className="btn btn-danger"
@@ -106,6 +119,8 @@ class Movies extends Component {
           ))}
         </tbody>
       </table>
+
+     
       </>
     );
   }

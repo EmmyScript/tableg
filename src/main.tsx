@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 //import App from './App.tsx'
 import './index.css'
+//import Movies from './components/Movies.tsx';
+//import Home from './components/Home.tsx';
 import Movies from './components/Movies.tsx';
 
 
